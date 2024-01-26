@@ -14,21 +14,12 @@ let popularPlaylistURL = musicBaseUrl + "popularTracks.json"
 let playlistURL = musicBaseUrl + "rSroodPlaylistData.json"
 let featuredArtistURL = musicBaseUrl + "rSroodFeaturedArtistData.json"
 let lyricsURL = "https://api.radiosrood.com/static/app/lyrics/"
-//let GOOGLE_ADMOB_KEY                 =    IAPHandler.shared.isGetPurchase() ? "" :  "ca-app-pub-7049872613588191/4747855668"
-//let GOOGLE_ADMOB_INTER               =    IAPHandler.shared.isGetPurchase() ? "" : "ca-app-pub-7049872613588191/5635919690"
-//let GOOGLE_ADMOB_NATIVE              =    IAPHandler.shared.isGetPurchase() ? "" :  "ca-app-pub-7049872613588191/7385126578"
-//let GOOGLE_ADMOB_ForMiniPlayer             =    IAPHandler.shared.isGetPurchase() ? "" :  "ca-app-pub-7049872613588191/5977355028"
-//
-//let GOOGLE_ADMOB_ForMusicPlayer             =    IAPHandler.shared.isGetPurchase() ? "" :  "ca-app-pub-7049872613588191/7260832328"
+let GOOGLE_ADMOB_KEY                 =    IAPHandler.shared.isGetPurchase() ? "" :  "ca-app-pub-7049872613588191/4747855668"
+let GOOGLE_ADMOB_INTER               =    IAPHandler.shared.isGetPurchase() ? "" : "ca-app-pub-7049872613588191/5635919690"
+let GOOGLE_ADMOB_NATIVE              =    IAPHandler.shared.isGetPurchase() ? "" :  "ca-app-pub-7049872613588191/7385126578"
+let GOOGLE_ADMOB_ForMiniPlayer             =    IAPHandler.shared.isGetPurchase() ? "" :  "ca-app-pub-7049872613588191/5977355028"
 
-
-
-let GOOGLE_ADMOB_KEY                 =    IAPHandler.shared.isGetPurchase() ? "" :  ""
-let GOOGLE_ADMOB_INTER               =    IAPHandler.shared.isGetPurchase() ? "" : ""
-let GOOGLE_ADMOB_NATIVE              =    IAPHandler.shared.isGetPurchase() ? "" :  ""
-let GOOGLE_ADMOB_ForMiniPlayer             =    IAPHandler.shared.isGetPurchase() ? "" :  ""
-
-let GOOGLE_ADMOB_ForMusicPlayer             =    IAPHandler.shared.isGetPurchase() ? "" :  ""
+let GOOGLE_ADMOB_ForMusicPlayer             =    IAPHandler.shared.isGetPurchase() ? "" :  "ca-app-pub-7049872613588191/7260832328"
 
 
 //ca-app-pub-7049872613588191/7260832328 /// for music player banner

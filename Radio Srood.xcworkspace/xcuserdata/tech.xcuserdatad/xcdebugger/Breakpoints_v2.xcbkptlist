@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "39C6458C-9AB1-4896-AA5B-CFDCF347E5DE"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5E65396-0222-4E0A-8E78-F76535CF509B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Radio Srood/DataHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "downloadImage(withURL:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F5E65396-0222-4E0A-8E78-F76535CF509B - 3ce6d8d29d595d1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Radio_Srood.DataHelper.downloadImage(withURL: Foundation.URL, completion: (Swift.Optional&lt;__C.UIImage&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Radio Srood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tech/Downloads/SroodV6.3%20-%20Mar%2026%202023/Radio%20Srood/DataHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "285"
+                  endingLineNumber = "285"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "F5E65396-0222-4E0A-8E78-F76535CF509B - 3ce6d8d29d5ea2d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Radio_Srood.DataHelper.downloadImage(withURL: Foundation.URL, completion: (Swift.Optional&lt;__C.UIImage&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Radio Srood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tech/Downloads/SroodV6.3%20-%20Mar%2026%202023/Radio%20Srood/DataHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "283"
+                  endingLineNumber = "283"
+                  offsetFromSymbolStart = "151">
+               </Location>
+               <Location
+                  uuid = "F5E65396-0222-4E0A-8E78-F76535CF509B - 1a18f7b8f5bd4502"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DownloadResponse&lt;Foundation.Data&gt;) -&gt; () in Radio_Srood.DataHelper.downloadImage(withURL: Foundation.URL, completion: (Swift.Optional&lt;__C.UIImage&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Radio Srood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tech/Downloads/SroodV6.3%20-%20Mar%2026%202023/Radio%20Srood/DataHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "284"
+                  endingLineNumber = "284"
+                  offsetFromSymbolStart = "179">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "957CB680-4081-48A8-B4A6-07BDBB9D30E3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Radio Srood/TimelineTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47B3F5B3-A537-4A94-8842-6CC1E32C3D5F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Radio Srood/TimelineTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3712AB46-0AD2-44D7-B0D9-1A6D4A113F60"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Radio Srood/Controller/MyMusic/MyMusicPlayerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "playerDidFinishPlaying(sender:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3712AB46-0AD2-44D7-B0D9-1A6D4A113F60 - 5f1c128c2b119f63"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Radio_Srood.MyMusicPlayerViewController.playerDidFinishPlaying(sender: Foundation.Notification) -&gt; ()"
+                  moduleName = "Radio Srood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tech/Downloads/SroodV6.3%20-%20Mar%2026%202023/Radio%20Srood/Controller/MyMusic/MyMusicPlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "1115">
+               </Location>
+               <Location
+                  uuid = "3712AB46-0AD2-44D7-B0D9-1A6D4A113F60 - 5f1c128c2b119f63"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Radio_Srood.MyMusicPlayerViewController.playerDidFinishPlaying(sender: Foundation.Notification) -&gt; ()"
+                  moduleName = "Radio Srood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tech/Downloads/SroodV6.3%20-%20Mar%2026%202023/Radio%20Srood/Controller/MyMusic/MyMusicPlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "1163">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

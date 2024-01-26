@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "2C9BFB84-8297-4E94-88C0-E90819AFDA62"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F56F46D-00D5-4954-95EA-E2B601314A67"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Radio Srood/Controller/MusicPlayer/MusicPlayerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2F56F46D-00D5-4954-95EA-E2B601314A67 - 5ebe3eb9fcfbc778"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Radio_Srood.MusicPlayerViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Radio Srood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hardik/Downloads/Radio%20Srood/Radio%20Srood/Controller/MusicPlayer/MusicPlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "111">
+               </Location>
+               <Location
+                  uuid = "2F56F46D-00D5-4954-95EA-E2B601314A67 - 5ebe3eb9fcfb389b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Radio_Srood.MusicPlayerViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Radio Srood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hardik/Downloads/Radio%20Srood/Radio%20Srood/Controller/MusicPlayer/MusicPlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "111">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0DD69A7D-8506-4DDF-BD2B-705DBC4980E9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Radio Srood/Controller/MyMusic/MyMusicPlayerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

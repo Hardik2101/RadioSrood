@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vlw-fk-tNA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vlw-fk-tNA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -2498,29 +2498,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuN-Wc-aAA">
-                                <rect key="frame" x="40" y="762" width="334" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_close" translatesAutoresizingMaskIntoConstraints="NO" id="Jd5-gP-ZUd">
+                                <rect key="frame" x="382" y="772" width="20" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="z4Q-re-StJ"/>
+                                    <constraint firstAttribute="height" constant="20" id="BVU-mA-6aP"/>
+                                    <constraint firstAttribute="width" constant="20" id="s5n-1m-d8s"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rve-4R-1Uc" secondAttribute="trailing" constant="40" id="01Z-eo-uWd"/>
-                            <constraint firstItem="QuN-Wc-aAA" firstAttribute="leading" secondItem="jjB-w0-93y" secondAttribute="leading" constant="40" id="194-5u-qv5"/>
                             <constraint firstItem="18m-kv-vao" firstAttribute="top" secondItem="rve-4R-1Uc" secondAttribute="bottom" id="9rX-b0-FIe"/>
+                            <constraint firstItem="Jd5-gP-ZUd" firstAttribute="centerY" secondItem="rve-4R-1Uc" secondAttribute="centerY" id="FkI-t1-RWi"/>
                             <constraint firstItem="QoV-9f-JQd" firstAttribute="top" secondItem="F3j-Xf-WXL" secondAttribute="bottom" id="Jxm-6s-UDp"/>
                             <constraint firstAttribute="trailing" secondItem="18m-kv-vao" secondAttribute="trailing" id="KbI-0P-r6Q"/>
                             <constraint firstAttribute="trailing" secondItem="QoV-9f-JQd" secondAttribute="trailing" id="OQU-iV-sFj"/>
+                            <constraint firstAttribute="trailing" secondItem="Jd5-gP-ZUd" secondAttribute="trailing" constant="12" id="OUk-S3-fL0"/>
                             <constraint firstItem="18m-kv-vao" firstAttribute="leading" secondItem="jjB-w0-93y" secondAttribute="leading" id="Q3w-nA-acg"/>
                             <constraint firstItem="QoV-9f-JQd" firstAttribute="leading" secondItem="jjB-w0-93y" secondAttribute="leading" id="b1b-3R-R6J"/>
-                            <constraint firstAttribute="trailing" secondItem="QuN-Wc-aAA" secondAttribute="trailing" constant="40" id="e1M-kM-KuS"/>
                             <constraint firstItem="rve-4R-1Uc" firstAttribute="top" secondItem="QoV-9f-JQd" secondAttribute="bottom" id="jly-QS-XYV"/>
-                            <constraint firstItem="18m-kv-vao" firstAttribute="top" secondItem="QuN-Wc-aAA" secondAttribute="bottom" id="kb2-NP-9An"/>
                             <constraint firstItem="paS-lw-Tmf" firstAttribute="top" secondItem="18m-kv-vao" secondAttribute="bottom" id="yMV-T4-ic8"/>
-                            <constraint firstItem="QuN-Wc-aAA" firstAttribute="top" secondItem="rve-4R-1Uc" secondAttribute="top" id="z5f-IW-WoT"/>
                             <constraint firstItem="rve-4R-1Uc" firstAttribute="leading" secondItem="jjB-w0-93y" secondAttribute="leading" constant="40" id="zvF-EH-wbY"/>
                         </constraints>
                     </view>
@@ -2533,6 +2531,7 @@
                         <outlet property="btnPlayPause" destination="1CY-8Z-udY" id="S8O-NY-Tnj"/>
                         <outlet property="heightOfAdsView" destination="f6O-ia-NVl" id="75H-kO-Vrc"/>
                         <outlet property="heightSongVIEW" destination="CPg-Sj-6X4" id="wki-KJ-oJu"/>
+                        <outlet property="imgAdClose" destination="Jd5-gP-ZUd" id="gg3-I2-6fQ"/>
                         <outlet property="imgSong" destination="LuW-Dt-53O" id="EwL-cH-Vov"/>
                         <outlet property="lblPlayerArtist" destination="t8H-rB-lG1" id="yFo-cU-K56"/>
                         <outlet property="lblSongName" destination="SZJ-rc-IKW" id="PBU-VH-Aso"/>
@@ -2541,7 +2540,6 @@
                         <outlet property="viewCurrentSong" destination="18m-kv-vao" id="wYq-7e-w2l"/>
                         <outlet property="viewSongProgress" destination="zF6-g1-dcd" id="DT9-9T-SKq"/>
                         <outlet property="vwAds" destination="rve-4R-1Uc" id="dR3-WY-Lya"/>
-                        <outlet property="vwAdsForTap" destination="QuN-Wc-aAA" id="7IG-qj-hVO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVQ-AI-Z0G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3592,13 +3590,13 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qdp-WT-DgQ">
                                                                     <rect key="frame" x="80" y="12.5" width="299" height="39.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RADIO SROOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgR-93-cRE">
+                                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="RADIO SROOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgR-93-cRE">
                                                                             <rect key="frame" x="0.0" y="0.0" width="299" height="20"/>
                                                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="14"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch To Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-zr-CQd">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Touch To Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-zr-CQd">
                                                                             <rect key="frame" x="0.0" y="21" width="299" height="18.5"/>
                                                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="13"/>
                                                                             <color key="textColor" white="1" alpha="0.80032628900000002" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -5705,6 +5703,7 @@
         <image name="google-plus.png" width="491.51998901367188" height="491.51998901367188"/>
         <image name="ic_backward" width="30" height="30"/>
         <image name="ic_calendar" width="16" height="16"/>
+        <image name="ic_close" width="32" height="32"/>
         <image name="ic_composer" width="16" height="16"/>
         <image name="ic_delete" width="30" height="30"/>
         <image name="ic_dot" width="24" height="24"/>

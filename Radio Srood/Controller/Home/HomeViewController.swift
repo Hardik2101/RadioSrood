@@ -20,7 +20,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var heightOfAdsView: NSLayoutConstraint!
     
-    @IBOutlet weak var vwAdsForTap: UIView!
+    
+    @IBOutlet weak var imgAdClose: UIImageView!
     
     var interstitial: GADInterstitial!
     var isInterstitialPresent = false
@@ -47,7 +48,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         prepareView()
         self.vwAds.isHidden = true
-        self.vwAdsForTap.isHidden = true
+        self.imgAdClose.isHidden = true
         self.heightOfAdsView.constant = 0
         radiosroodTableView.register(UINib(nibName: "BannerAdCell", bundle: nil), forCellReuseIdentifier: "BannerAdCell")
         loadBannerAds()
@@ -82,7 +83,7 @@ class HomeViewController: UIViewController {
 
         if purchase || isPurchaseSuccess {
             self.vwAds.isHidden = true
-            self.vwAdsForTap.isHidden = true
+            self.imgAdClose.isHidden = true
             self.heightOfAdsView.constant = 0
 //            isPurchaseSuccess = false
         }
@@ -90,7 +91,7 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
             if purchase || self.isPurchaseSuccess {
                 self.vwAds.isHidden = true
-                self.vwAdsForTap.isHidden = true
+                self.imgAdClose.isHidden = true
                 self.heightOfAdsView.constant = 0
     //            isPurchaseSuccess = false
             }
@@ -139,12 +140,12 @@ class HomeViewController: UIViewController {
         loadRedioHomeData()
         loadBannerAd()
         vwAds.isHidden = true
-        vwAdsForTap.isHidden = true
+        imgAdClose.isHidden = true
         heightOfAdsView.constant = 0
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(vwAdsTapped))
-        vwAdsForTap.addGestureRecognizer(tapGesture)
-        vwAdsForTap.isUserInteractionEnabled = true
+        imgAdClose.addGestureRecognizer(tapGesture)
+        imgAdClose.isUserInteractionEnabled = true
 
         self.view!.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
@@ -246,7 +247,7 @@ class HomeViewController: UIViewController {
             self.heightSongVIEW.constant = 0
             self.heightOfAdsView.constant = 0
             self.vwAds.isHidden = true
-            self.vwAdsForTap.isHidden = true
+            self.imgAdClose.isHidden = true
            
         } else {
             self.btnPlayPause.setImage(UIImage(named: "ic_pause"), for: .normal)
@@ -257,12 +258,12 @@ class HomeViewController: UIViewController {
             if !purchase {
                 self.heightOfAdsView.constant = 40
                 self.vwAds.isHidden = false
-                self.vwAdsForTap.isHidden = false
+                self.imgAdClose.isHidden = false
             } else {
                 if purchase || self.isPurchaseSuccess {
                     self.heightOfAdsView.constant = 0
                     self.vwAds.isHidden = true
-                    self.vwAdsForTap.isHidden = true
+                    self.imgAdClose.isHidden = true
                 }
             }
             
@@ -270,7 +271,7 @@ class HomeViewController: UIViewController {
                 if purchase || self.isPurchaseSuccess {
                     self.heightOfAdsView.constant = 0
                     self.vwAds.isHidden = true
-                    self.vwAdsForTap.isHidden = true
+                    self.imgAdClose.isHidden = true
                 }
             })
 
@@ -484,7 +485,7 @@ class HomeViewController: UIViewController {
     @objc private func handleIAPPurchase() {
         self.isPurchaseSuccess = true
         vwAds.isHidden = true
-        vwAdsForTap.isHidden = true
+        imgAdClose.isHidden = true
         heightOfAdsView.constant = 0
         radiosroodTableView.reloadData()
         DispatchQueue.main.asyncAfter(deadline: .now() + 50, execute: {

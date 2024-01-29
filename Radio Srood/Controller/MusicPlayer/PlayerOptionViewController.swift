@@ -74,8 +74,30 @@ class PlayerOptionViewController: UIViewController , PlayListViewControllerDeleg
     }
    
     @IBAction func actionShare(_ sender: Any) {
-         
+        let songTitle = currentSong.track
+        let artistName = currentSong.artist
+
+        // Create a string with the song details you want to share
+        let shareText = "Check out this awesome song: \(songTitle) by \(artistName)"
+
+        // Create an array of items to share
+        var items: [Any] = [shareText]
+
+        // Add the image to the array if available
+        if let image = imgPlayedSong.image {
+            items.append(image)
+        }
+
+        // Create a UIActivityViewController to display the Share Sheet
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+
+        // Exclude some activities if needed
+        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.assignToContact]
+
+        // Present the Share Sheet
+        self.present(activityViewController, animated: true, completion: nil)
     }
+
     @IBAction func actionLyrics(_ sender: Any) {
         if currentSong.lyric_synced != ""{
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "LyricPlayViewController") as! LyricPlayViewController

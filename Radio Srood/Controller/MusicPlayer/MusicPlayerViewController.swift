@@ -372,11 +372,14 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
     
     @objc func lyricsBtnClicked() {
     
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LyricsViewController") as! LyricsViewController
         if let track = track {
-            vc.track = track[selectedIndex]
+            if track[selectedIndex].lyric_synced != ""{
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "LyricPlayViewController") as! LyricPlayViewController
+                vc.lyricsUrl = "\(lyricsURL)\(track[selectedIndex].lyric_synced ?? "")"
+                vc.currentSong = track[selectedIndex].convertToSongModel()
+                self.present(vc, animated: true)
+            }
         }
-        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func optionMenuBtnClicked() {

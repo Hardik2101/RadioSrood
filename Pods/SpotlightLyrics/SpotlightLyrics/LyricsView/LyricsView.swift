@@ -123,15 +123,15 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     private func reloadViewModels() {
         lyricsViewModels.removeAll()
-        
+
         guard let lyrics = self.lyrics?.emptyToNil() else {
             reloadData()
             return
         }
-        
+
         parser = LyricsParser(lyrics: lyrics)
-        
-        for lyric in parser!.lyrics {
+
+        for (index, lyric) in parser!.lyrics.enumerated() {
             let viewModel = LyricsCellViewModel.cellViewModel(lyric: lyric.text,
                                                               font: lyricFont,
                                                               highlightedFont: lyricHighlightedFont,
@@ -139,11 +139,24 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
                                                               highlightedTextColor: lyricHighlightedTextColor
             )
             lyricsViewModels.append(viewModel)
+
+            // Add 5 blank lines after every 4 lines of lyrics
+            if (index + 1) % 4 == 0 && index < parser!.lyrics.count - 1 {
+                for _ in 0..<2 {
+                    let blankViewModel = LyricsCellViewModel.cellViewModel(lyric: "",
+                                                                          font: lyricFont,
+                                                                          highlightedFont: lyricHighlightedFont,
+                                                                          textColor: lyricTextColor,
+                                                                          highlightedTextColor: lyricHighlightedTextColor
+                    )
+                    lyricsViewModels.append(blankViewModel)
+                }
+            }
         }
         reloadData()
         contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 40, right: 0)
     }
-    
+
     // MARK: Controls
     
     internal func scroll(toTime time: TimeInterval, animated: Bool) {

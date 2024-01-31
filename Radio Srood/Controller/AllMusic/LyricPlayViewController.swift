@@ -9,9 +9,13 @@
 import UIKit
 import CoreMedia
 import SpotlightLyrics
+import Alamofire
+import AlamofireImage
+
 
 class LyricPlayViewController: UIViewController {
         
+    @IBOutlet weak var bgImage: UIImageView!
     @IBOutlet weak var btnPlay: UIButton!
     @IBOutlet weak var lblEndTime: UILabel!
     @IBOutlet weak var lblStartTime: UILabel!
@@ -22,6 +26,8 @@ class LyricPlayViewController: UIViewController {
     var currentSong = SongModel()
     var timeObserver: Any?
     var lyricsUrl = ""
+    var imageURl: URL?
+
     private let totalDuration = player?.currentItem?.duration
         
         override func viewDidLoad() {
@@ -66,7 +72,8 @@ class LyricPlayViewController: UIViewController {
             } else {
                 self.btnPlay.setImage(UIImage(named: "ic_pause"), for: .normal)
             }
-            
+            self.bgImage.af_setImage(withURL: imageURl ?? URL(string: "")!
+                                     , placeholderImage: UIImage(named: "b1.png"))
         }
     
     @IBAction func actionPlay(_ sender: Any) {

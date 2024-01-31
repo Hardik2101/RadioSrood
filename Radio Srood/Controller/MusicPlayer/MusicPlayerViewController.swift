@@ -65,7 +65,7 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
     private var isPurchaseSuccess: Bool = false
 
     var bannerAdViews: [GADBannerView] = []
-
+    var imageURl: URL?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -309,6 +309,7 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
             if let url = URL(string: item.artcover) {
                 self.artCoverImage.af_setImage(withURL: url, placeholderImage: UIImage(named: "Lav_Radio_Logo.png"))
                 self.bgImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: "b1.png"))
+                imageURl = url
             }
             self.trackTitle.text = item.track
             self.artistName.text = item.artist
@@ -377,6 +378,7 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "LyricPlayViewController") as! LyricPlayViewController
                 vc.lyricsUrl = "\(lyricsURL)\(track[selectedIndex].lyric_synced ?? "")"
                 vc.currentSong = track[selectedIndex].convertToSongModel()
+                vc.imageURl = self.imageURl
                 self.present(vc, animated: true)
             }
         }
@@ -447,6 +449,7 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "LyricPlayViewController") as! LyricPlayViewController
                 vc.lyricsUrl = "\(lyricsURL)\(track[selectedIndex].lyric_synced ?? "")"
                 vc.currentSong = track[selectedIndex].convertToSongModel()
+                vc.imageURl = self.imageURl
                 self.present(vc, animated: true)
             }
         }

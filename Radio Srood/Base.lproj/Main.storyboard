@@ -3590,13 +3590,13 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qdp-WT-DgQ">
                                                                     <rect key="frame" x="80" y="12.5" width="299" height="39.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="RADIO SROOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgR-93-cRE">
+                                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RADIO SROOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgR-93-cRE">
                                                                             <rect key="frame" x="0.0" y="0.0" width="299" height="20"/>
                                                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="14"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Touch To Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-zr-CQd">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch To Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-zr-CQd">
                                                                             <rect key="frame" x="0.0" y="21" width="299" height="18.5"/>
                                                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="13"/>
                                                                             <color key="textColor" white="1" alpha="0.80032628900000002" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -4664,13 +4664,13 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2PH-kx-deA">
                                                                     <rect key="frame" x="80" y="10.5" width="299" height="39.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RADIO SROOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-TE-iCc">
+                                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="RADIO SROOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-TE-iCc">
                                                                             <rect key="frame" x="0.0" y="0.0" width="299" height="20"/>
                                                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="14"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch To Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="VKa-Cm-SZg">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Touch To Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="VKa-Cm-SZg">
                                                                             <rect key="frame" x="0.0" y="21" width="299" height="18.5"/>
                                                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="13"/>
                                                                             <color key="textColor" white="1" alpha="0.80032628900000002" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -4746,7 +4746,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xJI-Ug-1GC" firstAttribute="top" secondItem="w8y-Q2-ftU" secondAttribute="top" id="2rp-gE-kYC"/>
                             <constraint firstAttribute="bottom" secondItem="xJI-Ug-1GC" secondAttribute="bottom" id="EFf-ev-mRI"/>
@@ -4796,9 +4796,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aHF-Yf-RWh">
+                                <rect key="frame" x="12" y="103" width="382" height="644"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5G-eg-UPB">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3Qs-zm-CFp">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOi-wS-ORx" customClass="LyricsView" customModule="SpotlightLyrics">
                                 <rect key="frame" x="12" y="103" width="390" height="644"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGb-rP-b9h">
                                 <rect key="frame" x="0.0" y="48" width="414" height="50"/>
@@ -4896,31 +4907,40 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.11783374100000001" green="0.1291696131" blue="0.14117822050000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1JV-Mn-7Pa" firstAttribute="leading" secondItem="Ewe-c6-N74" secondAttribute="leadingMargin" id="1aq-RQ-vzh"/>
                             <constraint firstItem="QTg-tO-pgZ" firstAttribute="top" secondItem="1JV-Mn-7Pa" secondAttribute="bottom" constant="25" id="218-WL-mRe"/>
+                            <constraint firstAttribute="bottom" secondItem="S5G-eg-UPB" secondAttribute="bottom" id="4JM-Pa-2jY"/>
                             <constraint firstItem="QTg-tO-pgZ" firstAttribute="centerX" secondItem="Ewe-c6-N74" secondAttribute="centerX" id="4aS-4T-XiW"/>
                             <constraint firstAttribute="trailing" secondItem="rGb-rP-b9h" secondAttribute="trailing" id="Fyd-em-hgf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1JV-Mn-7Pa" secondAttribute="trailing" id="JAH-2m-uRE"/>
                             <constraint firstItem="gF9-Gl-PNf" firstAttribute="top" secondItem="1JV-Mn-7Pa" secondAttribute="bottom" id="JQN-Gs-ewO"/>
                             <constraint firstItem="rOi-wS-ORx" firstAttribute="leading" secondItem="Ewe-c6-N74" secondAttribute="leading" constant="12" id="KeB-dp-Hgf"/>
                             <constraint firstItem="GBR-A9-WWz" firstAttribute="top" secondItem="rOi-wS-ORx" secondAttribute="bottom" constant="115" id="O2K-7e-Zxu"/>
+                            <constraint firstItem="S5G-eg-UPB" firstAttribute="leading" secondItem="Ewe-c6-N74" secondAttribute="leading" id="R10-PT-be1"/>
+                            <constraint firstItem="aHF-Yf-RWh" firstAttribute="leading" secondItem="rOi-wS-ORx" secondAttribute="leading" id="R4S-pz-vW5"/>
                             <constraint firstItem="rGb-rP-b9h" firstAttribute="leading" secondItem="Ewe-c6-N74" secondAttribute="leading" id="S17-mh-FFP"/>
+                            <constraint firstItem="aHF-Yf-RWh" firstAttribute="top" secondItem="rOi-wS-ORx" secondAttribute="top" id="SyX-KI-3TW"/>
                             <constraint firstItem="mSd-r5-SDB" firstAttribute="top" secondItem="1JV-Mn-7Pa" secondAttribute="bottom" id="Vqc-ZC-4Gf"/>
                             <constraint firstItem="gF9-Gl-PNf" firstAttribute="leading" secondItem="Ewe-c6-N74" secondAttribute="leadingMargin" id="XOM-eI-CWC"/>
                             <constraint firstItem="rOi-wS-ORx" firstAttribute="top" secondItem="sJq-cy-b6H" secondAttribute="bottom" constant="55" id="XsA-oW-WD3"/>
                             <constraint firstItem="mSd-r5-SDB" firstAttribute="top" secondItem="1JV-Mn-7Pa" secondAttribute="bottom" id="c7e-mi-xSe"/>
                             <constraint firstItem="rGb-rP-b9h" firstAttribute="top" secondItem="sJq-cy-b6H" secondAttribute="bottom" id="cNf-bL-s4G"/>
                             <constraint firstAttribute="trailing" secondItem="rOi-wS-ORx" secondAttribute="trailing" constant="12" id="fZh-w8-nPe"/>
+                            <constraint firstAttribute="trailing" secondItem="S5G-eg-UPB" secondAttribute="trailing" id="gah-5n-QAO"/>
+                            <constraint firstItem="aHF-Yf-RWh" firstAttribute="trailing" secondItem="Ewe-c6-N74" secondAttribute="trailingMargin" id="hlr-dv-IAo"/>
                             <constraint firstItem="gF9-Gl-PNf" firstAttribute="top" secondItem="1JV-Mn-7Pa" secondAttribute="bottom" id="k8G-3p-ZQV"/>
+                            <constraint firstItem="aHF-Yf-RWh" firstAttribute="bottom" secondItem="rOi-wS-ORx" secondAttribute="bottom" id="ohB-He-Ihm"/>
                             <constraint firstItem="1JV-Mn-7Pa" firstAttribute="top" secondItem="rOi-wS-ORx" secondAttribute="bottom" constant="20" id="phw-xK-1vE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mSd-r5-SDB" secondAttribute="trailing" id="rZ7-OW-nsQ"/>
                             <constraint firstItem="mSd-r5-SDB" firstAttribute="centerY" secondItem="gF9-Gl-PNf" secondAttribute="centerY" id="vIA-od-HAU"/>
                             <constraint firstItem="mSd-r5-SDB" firstAttribute="firstBaseline" secondItem="gF9-Gl-PNf" secondAttribute="baseline" id="vzv-aW-X2C"/>
+                            <constraint firstItem="S5G-eg-UPB" firstAttribute="top" secondItem="Ewe-c6-N74" secondAttribute="top" id="yg1-Zt-GZK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bgImage" destination="aHF-Yf-RWh" id="uOo-gW-AZG"/>
                         <outlet property="btnPlay" destination="QTg-tO-pgZ" id="VRl-gr-Q1l"/>
                         <outlet property="imgSong" destination="sqn-Ld-k8g" id="wvy-qW-cL3"/>
                         <outlet property="lblEndTime" destination="mSd-r5-SDB" id="cIf-oZ-TL0"/>

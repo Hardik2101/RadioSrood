@@ -160,6 +160,7 @@ class RadioCell: UITableViewCell {
             DispatchQueue.main.async {
                 self.playPauseBtn.setImage(UIImage(named: "pause.png"), for: .normal)
             }
+            player = AVPlayer()
             radioPlayer.play()
             isPlaying = true
             setupNowPlaying()

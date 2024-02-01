@@ -73,6 +73,7 @@ class MenuTableViewController: UITableViewController , SWRevealViewControllerDel
         if indexPath.row == 4 {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PauseRadio"), object: nil, userInfo: nil)
             guard let url = URL(string: "http://live.stream.cdn.pamirtv.com/ptv/d0dbe915091d400bd8ee7f27f0791303.sdp/index.m3u8") else { return }
+            player = AVPlayer()
             let asset = AVAsset(url: url)
             let playerItem = AVPlayerItem(asset: asset)
             let avPlayer = AVPlayer(playerItem: playerItem)

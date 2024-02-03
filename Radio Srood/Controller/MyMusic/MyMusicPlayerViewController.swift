@@ -181,35 +181,40 @@ class MyMusicPlayerViewController: UIViewController, GADBannerViewDelegate {
         }
     }
 
+    
     @objc func backwardBtnPressed() {
         if let track = track, selectedIndex > 0 {
-            self.selectedIndex = selectedIndex - 1
-            self.tempTrack = Array(track.dropFirst(selectedIndex))
-            firstTrackList = Array(track.dropLast(track.count - selectedIndex))
-            isSetMusic = true
-            self.isPlay = true
-            handleRecentInView(index: selectedIndex)
-            self.tableBgHeightConstraints.constant = CGFloat((((self.tempTrack?.count ?? 0)-1) * 60)+165)
-            self.radioTableView.reloadData()
-        } else {
-            player?.pause()
-            self.playPauseBtn.setImage(UIImage(named: "ic_play"), for:.normal)
-        }
-    }
-
-    @objc func forwardBtnPressed() {
-        if let track = track, selectedIndex < track.count-1 {
-            selectedIndex = selectedIndex + 1
-            tempTrack = Array(track.dropFirst(selectedIndex))
-            firstTrackList = Array(track.dropLast(track.count - selectedIndex))
+            selectedIndex -= 1
             isSetMusic = true
             isPlay = true
             handleRecentInView(index: selectedIndex)
             self.tableBgHeightConstraints.constant = CGFloat((((self.tempTrack?.count ?? 0)-1) * 60)+165)
             self.radioTableView.reloadData()
+
+            // Scroll to the selected song to make it visible
+            let indexPathToScroll = IndexPath(row: 2 + selectedIndex - (firstTrackList?.count ?? 0), section: 0)
+            radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
         } else {
             player?.pause()
-            self.playPauseBtn.setImage(UIImage(named: "ic_play"), for:.normal)
+            self.playPauseBtn.setImage(UIImage(named: "ic_play"), for: .normal)
+        }
+    }
+
+    @objc func forwardBtnPressed() {
+        if let track = track, selectedIndex < track.count - 1 {
+            selectedIndex += 1
+            isSetMusic = true
+            isPlay = true
+            handleRecentInView(index: selectedIndex)
+            self.tableBgHeightConstraints.constant = CGFloat((((self.tempTrack?.count ?? 0)-1) * 60)+165)
+            self.radioTableView.reloadData()
+
+            // Scroll to the selected song to make it visible
+            let indexPathToScroll = IndexPath(row: 2 + selectedIndex - (firstTrackList?.count ?? 0), section: 0)
+            radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+        } else {
+            player?.pause()
+            self.playPauseBtn.setImage(UIImage(named: "ic_play"), for: .normal)
         }
     }
 
@@ -307,16 +312,26 @@ extension MyMusicPlayerViewController: UITableViewDelegate, UITableViewDataSourc
             break
         default:
             pausePlayer()
-            self.selectedIndex = (firstTrackList?.count ?? 0) + indexPath.row - 1
-            self.isPlay = true
-            if let track = track {
-                self.tempTrack = Array(track.dropFirst(selectedIndex))
-                firstTrackList = Array(track.dropLast(track.count - selectedIndex))
+            let selectedTrackIndex = (firstTrackList?.count ?? 0) + indexPath.row - 1
+            if let track = track, selectedTrackIndex < track.count {
+                self.selectedIndex = selectedTrackIndex
+                self.isPlay = true
+                isSetMusic = true
+                handleRecentInView(index: selectedIndex)
+                tableBgHeightConstraints.constant = CGFloat((((tempTrack?.count ?? 0)-1) * 60) + 165)
+                radioTableView.reloadData()
+
+                // Check if the selected index is within the bounds of the table view
+                let numberOfVisibleRows = radioTableView.indexPathsForVisibleRows?.count ?? 0
+                if selectedTrackIndex < numberOfVisibleRows {
+                    // Scroll to the selected song to make it visible
+                    let indexPathToScroll = IndexPath(row: 2 + selectedTrackIndex - (firstTrackList?.count ?? 0), section: 0)
+                    radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+                }
+            } else {
+                // Handle the case when the selected index is out of bounds
+                print("Invalid selected index")
             }
-            isSetMusic = true
-            handleRecentInView(index: selectedIndex)
-            tableBgHeightConstraints.constant = CGFloat((((tempTrack?.count ?? 0)-1) * 60)+165)
-            radioTableView.reloadData()
         }
     }
 }

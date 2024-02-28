@@ -20,7 +20,7 @@ protocol MusicPlayerViewControllerDelegate : AnyObject{
     func dismissMusicPlayer()
 }
 
-class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
+class MusicPlayerViewController: UIViewController, GADBannerViewDelegate,AdsAPIViewDelegate {
     
     @IBOutlet weak var lblLyrics: UILabel!
     @IBOutlet weak var viewLyrics: UIView!
@@ -66,6 +66,13 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
 
     var bannerAdViews: [GADBannerView] = []
     var imageURl: URL?
+    var isMyMusic = false
+    var playerListTapCount = 0
+
+    var forwardButtonTapCount = 0
+//    var adsView: AdsAPIView?
+
+    var isPlayerListTap = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +104,7 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
         
         radioTableView.register(UINib(nibName: "BannerAdCell", bundle: nil), forCellReuseIdentifier: "BannerAdCell")
 
+//        adsView?.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -390,16 +398,62 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
         if let track = track {
             vc.currentSong = track[selectedIndex].convertToSongModel()
         }
+        vc.track = track?[selectedIndex]
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
     
-    @objc func moreInfoBtnClicked() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoreInfoViewController") as! MoreInfoViewController
-        if let track = track {
-            vc.track = track[selectedIndex]
+    @objc func addToCollection() {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlayListViewController") as! PlayListViewController
+        
+        isMyMusic = !isMyMusic
+        
+//        if isMyMusic {
+//            showToast(message: "Successfully add in My Collection", font: .systemFont(ofSize: 12.0))
+//        } else {
+//            showToast(message: "Remove from my collection", font: .systemFont(ofSize: 12.0))
+//        }
+
+        let item = track?[selectedIndex].convertToSongModel()
+        var savedTracks = UserDefaultsManager.shared.localTracksData
+        let trackIndex = savedTracks.firstIndex(where: {$0.trackid == item?.trackid})
+        if let trackIndex = trackIndex{
+            savedTracks[trackIndex].isBookMarked = !savedTracks[trackIndex].isBookMarked
+            
+            if savedTracks[trackIndex].isBookMarked {
+                showToast(message: "Successfully add in My Collection", font: .systemFont(ofSize: 12.0))
+            } else {
+                showToast(message: "Remove from my collection", font: .systemFont(ofSize: 12.0))
+            }
+
         }
-        self.present(vc, animated: true, completion: nil)
+        else{
+            let newItem = item
+            newItem?.isBookMarked = true
+            savedTracks.append(newItem ?? SongModel())
+        }
+        UserDefaultsManager.shared.localTracksData = savedTracks
+        radioTableView.reloadData()
+//        showToast(message: "Successfully add in My Collection", font: .systemFont(ofSize: 12.0))
+
+        
+        //        vc.delegate = self
+//        vc.modalPresentationStyle = .fullScreen
+
+    }
+    @objc func moreInfoBtnClicked() {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoreInfoViewController") as! MoreInfoViewController
+//        if let track = track {
+//            vc.track = track[selectedIndex]
+//        }
+//        self.present(vc, animated: true, completion: nil)
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlayListViewController") as! PlayListViewController
+        vc.songToSave = track?[selectedIndex].convertToSongModel() ?? SongModel()
+//        vc.delegate = self
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+
     }
     
     @objc func backwardBtnPressed() {
@@ -419,24 +473,98 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
             self.playPauseBtn.setImage(UIImage(named: "ic_play"), for: .normal)
         }
     }
-
+    
     @objc func forwardBtnPressed() {
         if let track = track, selectedIndex < track.count - 1 {
+            // Increment the selected index
             selectedIndex += 1
             isSetMusic = true
             isPlay = true
             handleRecentInView(index: selectedIndex)
-            self.tableBgHeightConstraints.constant = CGFloat((((self.tempTrack?.count ?? 0)-1) * 60)+165)
-            self.radioTableView.reloadData()
-
-            // Scroll to the selected song to make it visible
-            let indexPathToScroll = IndexPath(row: 2 + selectedIndex - (firstTrackList?.count ?? 0), section: 0)
-            radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+            
+            //My Code start
+            // Check if an ad should be played
+            if shouldPlayAdForwardBtnPressed() {
+                // Pause the player
+                player?.pause()
+                
+                // Show AdsAPIView
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "AdsAPIView") as! AdsAPIView
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
+            } else {
+                
+                
+                // Continue playing the next song
+//                forwardButtonTapCount = 0
+                playNextSong()
+            }
+            
+            //My Code end
+            
         } else {
+            // Handle when there are no more songs
             player?.pause()
             self.playPauseBtn.setImage(UIImage(named: "ic_play"), for: .normal)
         }
     }
+
+
+    @objc func forwardBtnPressed1() {
+        if let track = track, selectedIndex < track.count - 1 {
+            // Increment the selected index
+            selectedIndex += 1
+            isSetMusic = true
+            isPlay = true
+            handleRecentInView(index: selectedIndex)
+            
+            // Check if an ad should be played
+            if shouldPlayAd() {
+                // Pause the player
+                player?.pause()
+                
+                // Show AdsAPIView
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "AdsAPIView") as! AdsAPIView
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
+            } else {
+                // Continue playing the next song
+                playNextSong()
+            }
+        } else {
+            // Handle when there are no more songs
+            player?.pause()
+            self.playPauseBtn.setImage(UIImage(named: "ic_play"), for: .normal)
+        }
+    }
+
+
+    // Check if an ad should be played (for example, every second click)
+    private func shouldPlayAd() -> Bool {
+        // Implement your logic here
+        // For example, play ad every second click
+        return selectedIndex % 2 == 0
+    }
+    
+    func adsPlaybackDidFinish() {
+        // Dismiss AdsAPIView when the ad finishes
+        dismiss(animated: true) {
+            // Play the next song after dismissing the AdsAPIView
+
+            self.playNextSong()
+        }
+    }
+    
+    private func playNextSong() {
+        // Continue playing the next song
+        if let track = track, selectedIndex < track.count - 1 {
+            let nextSongIndexPath = IndexPath(row: selectedIndex + 1, section: 0)
+            radioTableView.scrollToRow(at: nextSongIndexPath, at: .top, animated: true)
+        }
+    }
+
+
+    
 
     func shareBtnClicked(url: URL) {
         let vc = UIActivityViewController(activityItems: [url], applicationActivities: [])
@@ -470,7 +598,19 @@ class MusicPlayerViewController: UIViewController, GADBannerViewDelegate {
         })
     }
 
+    private func shouldPlayerListPressed() -> Bool {
+        return playerListTapCount >= 3
+    }
+
     
+    private func shouldPlayAdForwardBtnPressed() -> Bool {
+        // Implement your logic here
+        // For example, play ad every second click
+//        return selectedIndex % 2 == 0
+        return forwardButtonTapCount >= 3
+    }
+    
+
     @IBAction func clickOn_btnDownload(_ sender: Any) {
         
         let purchase = IAPHandler.shared.isGetPurchase()
@@ -601,6 +741,8 @@ extension MusicPlayerViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.btnLyrics.addTarget(self, action: #selector(lyricsBtnClicked), for: .touchUpInside)
                 cell.btnMoreInfo.addTarget(self, action: #selector(moreInfoBtnClicked), for: .touchUpInside)
                 cell.btnOption.addTarget(self, action: #selector(optionMenuBtnClicked), for: .touchUpInside)
+                cell.btnAddtoCollection.addTarget(self, action: #selector(addToCollection), for: .touchUpInside)
+
                 return cell
             }
         case 1:
@@ -609,6 +751,14 @@ extension MusicPlayerViewController: UITableViewDelegate, UITableViewDataSource 
             cell.btnLyrics.addTarget(self, action: #selector(lyricsBtnClicked), for: .touchUpInside)
             cell.btnMoreInfo.addTarget(self, action: #selector(moreInfoBtnClicked), for: .touchUpInside)
             cell.btnOption.addTarget(self, action: #selector(optionMenuBtnClicked), for: .touchUpInside)
+            cell.btnAddtoCollection.addTarget(self, action: #selector(addToCollection), for: .touchUpInside)
+            let item = track?[selectedIndex].convertToSongModel()
+            var savedTracks = UserDefaultsManager.shared.localTracksData
+            let trackIndex = savedTracks.firstIndex(where: {$0.trackid == item?.trackid})
+
+            let imageName = savedTracks[trackIndex ?? 0].isBookMarked ?? false ? "ic_bookmark_fill" : "ic_bookmark"
+            cell.btnAddtoCollection.setImage(UIImage(named: imageName), for: .normal)
+
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecentListCell", for: indexPath) as! RecentListCell
@@ -649,20 +799,37 @@ extension MusicPlayerViewController: UITableViewDelegate, UITableViewDataSource 
         default:
             pausePlayer()
             let selectedTrackIndex = (firstTrackList?.count ?? 0) + indexPath.row - 1
+
             if let track = track, selectedTrackIndex < track.count {
                 self.selectedIndex = selectedTrackIndex
                 self.isPlay = true
                 isSetMusic = true
                 handleRecentInView(index: selectedIndex)
+                
                 tableBgHeightConstraints.constant = CGFloat((((tempTrack?.count ?? 0)-1) * 60) + 165)
                 radioTableView.reloadData()
-
-                // Check if the selected index is within the bounds of the table view
-                let numberOfVisibleRows = radioTableView.indexPathsForVisibleRows?.count ?? 0
-                if selectedTrackIndex < numberOfVisibleRows {
-                    // Scroll to the selected song to make it visible
-                    let indexPathToScroll = IndexPath(row: 2 + selectedTrackIndex - (firstTrackList?.count ?? 0), section: 0)
-                    radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+                playerListTapCount = playerListTapCount + 1
+                
+                if shouldPlayerListPressed() {
+                    isPlayerListTap = true
+                    playerListTapCount = 0
+                    
+                    if !IAPHandler.shared.isGetPurchase() {
+                        // Pause the player and present AdsAPIView only if isGwrPurchase is false
+                        player?.pause()
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AdsAPIView") as! AdsAPIView
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: true)
+                    }
+                } else {
+                    // Check if the selected index is within the bounds of the table view
+                    let numberOfVisibleRows = radioTableView.indexPathsForVisibleRows?.count ?? 0
+                    
+                    if selectedTrackIndex < numberOfVisibleRows {
+                        // Scroll to the selected song to make it visible
+                        let indexPathToScroll = IndexPath(row: 2 + selectedTrackIndex - (firstTrackList?.count ?? 0), section: 0)
+                        radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+                    }
                 }
             } else {
                 // Handle the case when the selected index is out of bounds
@@ -757,6 +924,8 @@ extension MusicPlayerViewController {
         player?.seek(to: .zero, toleranceBefore: .zero, toleranceAfter: .zero)
         if isRepeat {
             player?.play()
+        }else if isPlayerListTap {
+            player?.play()
         } else {
             NotificationCenter.default.removeObserver(self,
                                                       name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
@@ -823,6 +992,7 @@ extension MusicPlayerViewController {
     }
 
     @IBAction func forwardBtnEvent(_ sender: Any) {
+        isPlayerListTap = false
         self.pausePlayer()
         self.forwardBtnPressed()
     }
@@ -968,17 +1138,24 @@ extension MusicPlayerViewController{
         }
     }
     
-    func configureRecentlyPlayed(index : Int){
+    
+    func configureRecentlyPlayed(index: Int) {
         if let item = track?[index] {
             var savedTracks = UserDefaultsManager.shared.localTracksData
-            let trackIndex = savedTracks.firstIndex(where: {$0.trackid == item.trackid})
+            let trackIndex = savedTracks.firstIndex { $0.trackid == item.trackid }
+
             if let trackIndex = trackIndex {
-                savedTracks.remove(at: trackIndex)
+                // Track already exists, update properties as needed
+                savedTracks[trackIndex].isRecentlyPlayed = true
+            } else {
+                // Track is not in the list, add it with isRecentlyPlayed set to true
+                let newItem = item.convertToSongModel()
+                newItem.isRecentlyPlayed = true
+                savedTracks.append(newItem)
             }
-            let newItem = item.convertToSongModel()
-            newItem.isRecentlyPlayed = true
-            savedTracks.append(newItem)
+
             UserDefaultsManager.shared.localTracksData = savedTracks
         }
     }
+
 }

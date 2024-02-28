@@ -102,6 +102,14 @@ class MenuTableViewController: UITableViewController , SWRevealViewControllerDel
                 navVC.modalPresentationStyle = .fullScreen
                 self.present(navVC, animated: true)
                 self.revealViewController()?.revealToggle(self)
+            } else {
+//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "AdsAPIView") as! AdsAPIView
+//                let navVC = UINavigationController(rootViewController: vc)
+//                navVC.navigationBar.isHidden = true
+//                navVC.modalPresentationStyle = .fullScreen
+//                self.present(navVC, animated: true)
+//                self.revealViewController()?.revealToggle(self)
+
             }
 
         }

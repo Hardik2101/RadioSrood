@@ -92,6 +92,7 @@
 		80BFD93B291BFA6C003B4C58 /* RecentPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFD93A291BFA6C003B4C58 /* RecentPlayerViewController.swift */; };
 		B7131DCF2B43104D00F65434 /* BannerAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7131DCD2B43104D00F65434 /* BannerAdCell.swift */; };
 		B7131DD02B43104D00F65434 /* BannerAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7131DCE2B43104D00F65434 /* BannerAdCell.xib */; };
+		B742CD852B6FA20000F82380 /* AdsAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B742CD842B6FA20000F82380 /* AdsAPIModel.swift */; };
 		B775E21D2B34C89C000E62F3 /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775E21C2B34C89C000E62F3 /* CustomLoader.swift */; };
 		B7CD49672B3348C000B07DB5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7CD49662B3348BF00B07DB5 /* StoreKit.framework */; };
 		B7CD49692B334AC300B07DB5 /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD49682B334AC300B07DB5 /* IAPHandler.swift */; };
@@ -99,6 +100,7 @@
 		B7CD496E2B3368FE00B07DB5 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD496D2B3368FE00B07DB5 /* Date + Extension.swift */; };
 		B7CD49702B33692D00B07DB5 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD496F2B33692D00B07DB5 /* UIView + Extension.swift */; };
 		B7D03B472B31E3E6001FE09A /* IAPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D03B462B31E3E6001FE09A /* IAPVC.swift */; };
+		B7ED01E72B6EC79C0007C9FE /* AdsAPIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED01E62B6EC79C0007C9FE /* AdsAPIView.swift */; };
 		B7F405C42B33748700E9F4C8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F405C32B33748700E9F4C8 /* Reachability.swift */; };
 		DC02D41D29674B280009FF39 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC02D41C29674B280009FF39 /* UIView+Extension.swift */; };
 		DC062BB429924928008245F2 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC062BB329924928008245F2 /* MusicPlayerViewController.swift */; };
@@ -249,6 +251,7 @@
 		A0E2D79E6C6D2E590C86407B /* Pods-Radio Srood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radio Srood.release.xcconfig"; path = "Pods/Target Support Files/Pods-Radio Srood/Pods-Radio Srood.release.xcconfig"; sourceTree = "<group>"; };
 		B7131DCD2B43104D00F65434 /* BannerAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdCell.swift; sourceTree = "<group>"; };
 		B7131DCE2B43104D00F65434 /* BannerAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerAdCell.xib; sourceTree = "<group>"; };
+		B742CD842B6FA20000F82380 /* AdsAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsAPIModel.swift; sourceTree = "<group>"; };
 		B775E21C2B34C89C000E62F3 /* CustomLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
 		B7CD49662B3348BF00B07DB5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7CD49682B334AC300B07DB5 /* IAPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 		B7CD496D2B3368FE00B07DB5 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		B7CD496F2B33692D00B07DB5 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		B7D03B462B31E3E6001FE09A /* IAPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPVC.swift; sourceTree = "<group>"; };
+		B7ED01E62B6EC79C0007C9FE /* AdsAPIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsAPIView.swift; sourceTree = "<group>"; };
 		B7F405C32B33748700E9F4C8 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C3F9C716C727FA030C5FD72C /* Pods_Radio_Srood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radio_Srood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC02D41C29674B280009FF39 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -397,6 +401,7 @@
 		3F0E15671EADEF970009734F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B742CD832B6FA1EA00F82380 /* AdsAPI */,
 				18C788342A1AA9D400712ECE /* PlayList */,
 				3F0E15681EADEFB70009734F /* TimelineModel.swift */,
 				3F0E156E1EAE17900009734F /* NewsObject.swift */,
@@ -601,6 +606,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B742CD832B6FA1EA00F82380 /* AdsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				B742CD842B6FA20000F82380 /* AdsAPIModel.swift */,
+			);
+			name = AdsAPI;
+			sourceTree = "<group>";
+		};
 		B7D03B452B31E3C8001FE09A /* IAPVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -770,6 +783,7 @@
 				DC062BB2299248BB008245F2 /* MusicPlayer */,
 				DC5639C129805F8F00697113 /* Home */,
 				DC526B752970926400FFFBED /* MyMusic */,
+				B7ED01E62B6EC79C0007C9FE /* AdsAPIView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1063,6 +1077,7 @@
 			files = (
 				DC062BBB29924C62008245F2 /* PopularPlaylistModles.swift in Sources */,
 				3F9AD5D21EAE4900009B1532 /* PodcastTableViewCell.swift in Sources */,
+				B7ED01E72B6EC79C0007C9FE /* AdsAPIView.swift in Sources */,
 				4025E1AA2256506E0062DE07 /* SCLExtensions.swift in Sources */,
 				3FAFC9B91EAE3D000017D22B /* PodcastTableViewController.swift in Sources */,
 				18C788452A1E8E6100712ECE /* RecentlyPlayedTableViewCell.swift in Sources */,
@@ -1076,6 +1091,7 @@
 				18C788382A1AABBD00712ECE /* SongModel.swift in Sources */,
 				DC0B7FEE298281BD00CD7A08 /* TrackCell.swift in Sources */,
 				3F9AD5F11EB09BC5009B1532 /* JukeboxItem.swift in Sources */,
+				B742CD852B6FA20000F82380 /* AdsAPIModel.swift in Sources */,
 				DC0B7FF52982831900CD7A08 /* TrackCollectionCell.swift in Sources */,
 				3F9AD5D01EAE46CB009B1532 /* PodcastObject.swift in Sources */,
 				18C788482A1E970800712ECE /* AllMusicViewController.swift in Sources */,
@@ -1317,7 +1333,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 411;
+				CURRENT_PROJECT_VERSION = 441;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = SAA73LP9PJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Radio Srood/Info.plist";
@@ -1325,7 +1341,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 7.2;
+				MARKETING_VERSION = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developer.radiosrood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1349,7 +1365,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 411;
+				CURRENT_PROJECT_VERSION = 441;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = SAA73LP9PJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Radio Srood/Info.plist";
@@ -1357,7 +1373,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 7.2;
+				MARKETING_VERSION = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.developer.radiosrood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

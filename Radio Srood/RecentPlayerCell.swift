@@ -286,12 +286,21 @@ class RecentPlayerOptionCell: UITableViewCell {
     @IBOutlet weak var airPlayBloke: UIView!
     @IBOutlet weak var btnMoreInfo: UIButton!
     
+    @IBOutlet weak var btnAddtoCollection: UIButton!
     var airPlay = UIView()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpAirPlayButton()
         airPlayBloke.addSubview(airPlay)
+        
+        btnAddtoCollection.imageView?.image = UIImage(named: "ic_like_filled")
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+            self.btnAddtoCollection.imageView?.image = UIImage(named: "ic_like_info")
+
+        })
         // Initialization code
     }
 
@@ -311,6 +320,10 @@ class RecentPlayerOptionCell: UITableViewCell {
             airPlay.addSubview(buttonView)
         }
     }
-
+    
+    func updateAddToCollectionButtonImage(isBookMarked: Bool) {
+        let imageName = isBookMarked ? "ic_like_filled" : "ic_like_info"
+        btnAddtoCollection.setImage(UIImage(named: imageName), for: .normal)
+    }
 }
 

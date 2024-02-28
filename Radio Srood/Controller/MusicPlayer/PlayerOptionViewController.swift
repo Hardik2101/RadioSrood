@@ -7,6 +7,16 @@
 //
 
 import UIKit
+import SWRevealViewController
+import Alamofire
+import AlamofireImage
+import GoogleMobileAds
+import StoreKit
+import MediaPlayer
+import AVKit
+import AVPlayerViewControllerSubtitles
+import SpotlightLyrics
+
  
 class PlayerOptionViewController: UIViewController , PlayListViewControllerDelegate {
     @IBOutlet weak var lblPlayedSongtitle: UILabel!
@@ -16,6 +26,9 @@ class PlayerOptionViewController: UIViewController , PlayListViewControllerDeleg
     @IBOutlet weak var lblMyMusic: UILabel!
     var currentSong = SongModel()
     var isMyMusic = false
+    
+    var track: Track?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         isAlreadyInMyMusic(track: currentSong)
@@ -103,16 +116,76 @@ class PlayerOptionViewController: UIViewController , PlayListViewControllerDeleg
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "LyricPlayViewController") as! LyricPlayViewController
             vc.lyricsUrl = "\(lyricsURL)\(currentSong.lyric_synced)"
             vc.currentSong = currentSong
+            vc.imageURl = URL(string: currentSong.artcover)
             self.present(vc, animated: true)
         }
+//
+//            let purchase = IAPHandler.shared.isGetPurchase()
+//
+//            if purchase  {
+//                if let currentTrack = track {
+//                    let urlString = currentTrack.mediaPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//                    guard let mediaPathInfo = urlString, let url = URL(string: songPath + mediaPathInfo) else {
+//                        return
+//                    }
+//
+//                    var name = "\(url.lastPathComponent)"
+//                    let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+//                        var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//                        documentsURL.appendPathComponent(name)
+//                        return (documentsURL, [.removePreviousFile])
+//                    }
+//
+//                    Alamofire.download(url, to: destination)
+//                        .downloadProgress { progress in
+////                            DispatchQueue.main.async {
+////                                self.vwDownloadProgress.setProgress(Float(progress.fractionCompleted), animated: true)
+////                            }
+//                            print("Download Progress: \(progress.fractionCompleted)")
+//                            if (progress.fractionCompleted == 1) {
+//                                self.navigationController?.finishProgress()
+////                                self.vwDownloadProgress.isHidden = t÷÷rue
+////                                self.vwDownloadProgress.setProgress(0.0, animated: false)
+//
+//                            }
+//                        }
+//                        .response { response in
+//                            if let destinationURL = response.destinationURL {
+//                                print(destinationURL)
+//                            }
+//                        }
+//
+//                    // Update UserDefaults with artcover for the current track
+//                    UserDefaults.standard.set(currentTrack.artcover, forKey: "\(url.deletingPathExtension().lastPathComponent)")
+//
+//                    if let url = URL(string: currentTrack.artcover) {
+//                    }
+//                }
+//
+//            } else {
+//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "IAPVC") as! IAPVC
+//                let navVC = UINavigationController(rootViewController: vc)
+//                navVC.navigationBar.isHidden = true
+//                navVC.modalPresentationStyle = .fullScreen
+//                self.present(navVC, animated: true)
+//            }
+
+
     }
     
     @IBAction func actionAddPlayList(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlayListViewController") as! PlayListViewController
-        vc.songToSave = self.currentSong
-        vc.delegate = self
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlayListViewController") as! PlayListViewController
+//        vc.songToSave = self.currentSong
+//        vc.delegate = self
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true)
+        
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoreInfoViewController") as! MoreInfoViewController
+                if let track = track {
+                    vc.track = track
+                }
+                self.present(vc, animated: true, completion: nil)
+                
     }
     
     func songSavedToList() {
@@ -134,7 +207,7 @@ func showToast(message : String, font: UIFont) {
     toastLabel.layer.cornerRadius = 18;
     toastLabel.clipsToBounds  =  true
     self.view.addSubview(toastLabel)
-    UIView.animate(withDuration: 2.0, delay: 0.1, options: .curveEaseOut, animations: {
+    UIView.animate(withDuration: 3.0, delay: 0.9, options: .curveEaseOut, animations: {
          toastLabel.alpha = 0.0
     }, completion: {(isCompleted) in
         toastLabel.removeFromSuperview()

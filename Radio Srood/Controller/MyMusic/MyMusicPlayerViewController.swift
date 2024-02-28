@@ -42,6 +42,7 @@ class MyMusicPlayerViewController: UIViewController, GADBannerViewDelegate {
     var isLike = false
     var isRepeat = false
     var timeObserver: Any?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +74,9 @@ class MyMusicPlayerViewController: UIViewController, GADBannerViewDelegate {
                                                object: nil)
         
         radioTableView.register(UINib(nibName: "BannerAdCell", bundle: nil), forCellReuseIdentifier: "BannerAdCell")
+        
+
+
 
     }
     
@@ -92,6 +96,10 @@ class MyMusicPlayerViewController: UIViewController, GADBannerViewDelegate {
     }
 
     deinit {
+        if let timeObserver = timeObserver, let player = player {
+            player.removeTimeObserver(timeObserver)
+        }
+
         UIApplication.shared.endReceivingRemoteControlEvents()
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [:]
         NotificationCenter.default.removeObserver(self,
@@ -102,6 +110,7 @@ class MyMusicPlayerViewController: UIViewController, GADBannerViewDelegate {
                                                   object: nil)
         NotificationCenter.default.removeObserver(self)
         print("Remove screen")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -191,9 +200,14 @@ class MyMusicPlayerViewController: UIViewController, GADBannerViewDelegate {
             self.tableBgHeightConstraints.constant = CGFloat((((self.tempTrack?.count ?? 0)-1) * 60)+165)
             self.radioTableView.reloadData()
 
-            // Scroll to the selected song to make it visible
-            let indexPathToScroll = IndexPath(row: 2 + selectedIndex - (firstTrackList?.count ?? 0), section: 0)
-            radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+            // Check if the selected index is within the bounds of the table view
+            let indexToScroll = 2 + selectedIndex - (firstTrackList?.count ?? 0)
+            if indexToScroll >= 0 && indexToScroll < radioTableView.numberOfRows(inSection: 0) {
+                let indexPathToScroll = IndexPath(row: indexToScroll, section: 0)
+                radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+            } else {
+                print("Invalid index for scrolling: \(indexToScroll)")
+            }
         } else {
             player?.pause()
             self.playPauseBtn.setImage(UIImage(named: "ic_play"), for: .normal)
@@ -209,9 +223,14 @@ class MyMusicPlayerViewController: UIViewController, GADBannerViewDelegate {
             self.tableBgHeightConstraints.constant = CGFloat((((self.tempTrack?.count ?? 0)-1) * 60)+165)
             self.radioTableView.reloadData()
 
-            // Scroll to the selected song to make it visible
-            let indexPathToScroll = IndexPath(row: 2 + selectedIndex - (firstTrackList?.count ?? 0), section: 0)
-            radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+            // Check if the selected index is within the bounds of the table view
+            let indexToScroll = 2 + selectedIndex - (firstTrackList?.count ?? 0)
+            if indexToScroll >= 0 && indexToScroll < radioTableView.numberOfRows(inSection: 0) {
+                let indexPathToScroll = IndexPath(row: indexToScroll, section: 0)
+                radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+            } else {
+                print("Invalid index for scrolling: \(indexToScroll)")
+            }
         } else {
             player?.pause()
             self.playPauseBtn.setImage(UIImage(named: "ic_play"), for: .normal)
@@ -327,9 +346,12 @@ extension MyMusicPlayerViewController: UITableViewDelegate, UITableViewDataSourc
                     // Scroll to the selected song to make it visible
                     let indexPathToScroll = IndexPath(row: 2 + selectedTrackIndex - (firstTrackList?.count ?? 0), section: 0)
                     radioTableView.scrollToRow(at: indexPathToScroll, at: .top, animated: true)
+                } else {
+                    // The selected row is not visible, scroll to make it visible
+                    radioTableView.scrollToRow(at: indexPath, at: .top, animated: true)
                 }
             } else {
-                // Handle the case when the selected index is out of bounds
+//                 Handle the case wh≥≥≥≥≥en the selected index is out of bounds
                 print("Invalid selected index")
             }
         }
@@ -373,8 +395,10 @@ extension MyMusicPlayerViewController: GADAdLoaderDelegate, GADUnifiedNativeAdLo
 extension MyMusicPlayerViewController {
 
     func play(url: URL, isPlay: Bool = false) {
+        
         let playerItem = AVPlayerItem(url: url)
         player = AVPlayer(playerItem:playerItem)
+        
         self.playerSlider.minimumValue = 0.0
         self.playerSlider.maximumValue = Float(player?.currentItem?.asset.duration.seconds ?? 0.0)
         populateLabelWithTime(self.lblStartTime, time: 0.0)
@@ -396,14 +420,23 @@ extension MyMusicPlayerViewController {
         self.setupNowPlaying()
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         //time observer to update slider.
-        timeObserver = player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), // used to monitor the current play time and update slider
-                                       queue: DispatchQueue.global(), using: { [weak self] (progressTime) in
+//        timeObserver = player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), // used to monitor the current play time and update slider
+//                                       queue: DispatchQueue.global(), using: { [weak self] (progressTime) in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async {
+//                self.playerSlider.value = Float(progressTime.seconds)
+//                self.populateLabelWithTime(self.lblStartTime, time: progressTime.seconds)
+//            }
+//        })
+        
+        timeObserver = player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: DispatchQueue.global(), using: { [weak self] (progressTime) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.playerSlider.value = Float(progressTime.seconds)
                 self.populateLabelWithTime(self.lblStartTime, time: progressTime.seconds)
             }
         })
+
     }
 
     @objc func playerDidFinishPlaying(sender: Notification) {
@@ -579,8 +612,8 @@ extension MyMusicPlayerViewController {
         self.playerSlider.setValue(0, animated: true)
         self.populateLabelWithTime(self.lblStartTime, time: 0.0)
         player?.seek(to: .zero, toleranceBefore: .zero, toleranceAfter: .zero)
-        if let timeObserver = timeObserver {
-            player?.removeTimeObserver(timeObserver)
+        if let timeObserver = timeObserver, let player = player {
+            player.removeTimeObserver(timeObserver)
         }
     }
 

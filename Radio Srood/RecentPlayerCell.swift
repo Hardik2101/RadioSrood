@@ -294,13 +294,13 @@ class RecentPlayerOptionCell: UITableViewCell {
         setUpAirPlayButton()
         airPlayBloke.addSubview(airPlay)
         
-        btnAddtoCollection.imageView?.image = UIImage(named: "ic_like_filled")
+//        btnAddtoCollection.imageView?.image = UIImage(named: "ic_like_filled")
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-            self.btnAddtoCollection.imageView?.image = UIImage(named: "ic_like_info")
-
-        })
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+//            self.btnAddtoCollection.imageView?.image = UIImage(named: "ic_like_info")
+//
+//        })
         // Initialization code
     }
 

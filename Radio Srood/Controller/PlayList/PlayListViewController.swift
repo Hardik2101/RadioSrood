@@ -87,12 +87,27 @@ extension PlayListViewController : UITableViewDelegate , UITableViewDataSource{
             self.present(vc, animated: true)
         }
         else{
-            self.playList[indexPath.row].songs.append(songToSave)
-            UserDefaultsManager.shared.playListsData = self.playList
-            delegate?.songSavedToList()
-            self.showToast(message: "Successfully added to Playlist", font: .systemFont(ofSize: 12.0))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-                self.dismiss(animated: true)
+            let selectedPlaylist = self.playList[indexPath.row]
+
+            if selectedPlaylist.songs.contains(where: { $0.trackid == songToSave.trackid }) {
+                // Song with the same track ID already exists in the playlist, show a message or handle accordingly
+                self.showToast(message: "Song already added in to the Playlist", font: .systemFont(ofSize: 12.0))
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self.dismiss(animated: true)
+                }
+
+            } else {
+                // Song with a different track ID, add it to the playlist
+                selectedPlaylist.songs.append(songToSave)
+                UserDefaultsManager.shared.playListsData = self.playList
+                delegate?.songSavedToList()
+                self.showToast(message: "Successfully added to Playlist", font: .systemFont(ofSize: 12.0))
+                
+                // Dismiss the view after a delay
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self.dismiss(animated: true)
+                }
             }
         }
     }
